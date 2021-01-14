@@ -1,0 +1,4 @@
+*.o
+private.pem
+msj
+hash
