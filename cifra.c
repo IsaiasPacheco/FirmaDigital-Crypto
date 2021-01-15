@@ -25,7 +25,7 @@ int firmarArchivo(char * archivo, char * nomArchFirma, char * nomArchLlavePrivad
 
     //Se crea el hash del mensaje usando SHA1 y se guarda en el archivo "hash"
     crearHash(archivo);
-    int tam = numCaracteresArchivo(archivo);
+    int tam = numCaracteresArchivo("hash");
     unsigned char * cipher = (unsigned char *)malloc(sizeof(char)*128);
     
     
@@ -161,12 +161,12 @@ void crearHash(char * nombre){
     FILE * archivo;
     archivo = fopen("hash", "w");
 
-    //printf("Hash:[");
+    printf("Digesto:[");
     for(i = 0; i < md_len; i++){
-            //printf("%02x", md_value[i]);
+            printf("%02x", md_value[i]);
             fprintf(archivo, "%02x", md_value[i]);
     }
-    //printf("]\n");
+    printf("]\n");
 
     fclose(archivo);
     EVP_cleanup();
